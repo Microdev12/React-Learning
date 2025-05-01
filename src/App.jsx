@@ -1,42 +1,19 @@
-import reactImage from "./assets/react-core-concepts.png";
 import { CORE_CONCEPTS } from "./data.js";
+import Header from "./components/Header/Header.jsx";
+import CoreConcept from "./components/CoreConcept.jsx";
+import TabButton from "./components/TabButton.jsx";
 // import componentImage from "./assets/components.png";
 // import configImage from "./assets/config.png";
 // import jsxUIImage from "./assets/jsx-ui.png";
 // import stateMgmtImage from "./assets/state-mgmt.png";
 
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-
-function getDynamicData(max) {
-  const index = Math.floor(Math.random() * (max + 1));
-  return index;
-}
-
-function Header() {
-  const description = reactDescriptions[getDynamicData(2)];
-  return (
-    <header>
-      <img src={reactImage} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
 // Object Destructing
-function CoreConcept({ image, title, description }) {
-  return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-}
 
 function App() {
+  function handlerClick() {
+    console.log("Hello Aditya!");
+  }
+
   return (
     <div>
       <Header></Header>
@@ -57,6 +34,15 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[2]} />
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={handlerClick}>Components</TabButton>
+            <TabButton onSelect={handlerClick}>JSX</TabButton>
+            <TabButton onSelect={handlerClick}>Props</TabButton>
+            <TabButton onSelect={handlerClick}>State</TabButton>
+          </menu>
         </section>
       </main>
     </div>
